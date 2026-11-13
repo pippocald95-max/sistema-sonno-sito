@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Testimonianze — Cosimo Sgobba · Sleep Coach</title>
+<meta name="description" content="Le video testimonianze di chi ha già trasformato il proprio sonno grazie al percorso di sleep coaching e al sistema di riposo progettato su misura." />
+<link rel="canonical" href="https://cosimosgobba.it/testimonianze.html" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cosimosgobba.it/testimonianze.html" />
+<meta property="og:title" content="Testimonianze — Cosimo Sgobba · Sleep Coach" />
+<meta property="og:description" content="Le video testimonianze di chi ha già trasformato il proprio sonno grazie al percorso di sleep coaching e al sistema di riposo progettato su misura." />
+<meta property="og:image" content="https://cosimosgobba.it/assets/img/cosimo-portrait.jpg" />
+<meta property="og:locale" content="it_IT" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Testimonianze — Cosimo Sgobba · Sleep Coach" />
+<meta name="twitter:description" content="Le video testimonianze di chi ha già trasformato il proprio sonno grazie al percorso di sleep coaching e al sistema di riposo progettato su misura." />
+<meta name="twitter:image" content="https://cosimosgobba.it/assets/img/cosimo-portrait.jpg" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27 fill=%27none%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714.5%27 stroke=%27%23a4532b%27/%3E%3Cpath d=%27M16 4 A12 12 0 0 1 16 28 A13 13 0 0 0 16 4Z%27 fill=%27%23a4532b%27/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="css/tokens.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/site.css" />
+<link rel="stylesheet" href="css/notte.css" />
+<link rel="stylesheet" href="css/polish.css" />
+<style>
+  /* Testimonianze — stili di pagina */
+  .sec-sub{margin:var(--space-5) 0 0;max-width:60ch;color:var(--c-text-2);font-size:var(--text-lg);line-height:1.5}
+
+  /* Video: impilati, a tutta larghezza di colonna, come nella pagina originale */
+  .tst-videos{display:flex;flex-direction:column;gap:clamp(2.5rem,5vw,4.5rem);max-width:900px;margin:0 auto}
+  .tst-embed{position:relative;aspect-ratio:16/9;overflow:hidden;background:#000;border:1px solid var(--c-line);border-radius:var(--radius-lg,3px)}
+  .tst-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+  /* Giostra delle recensioni scritte */
+  .tst-carousel{position:relative;max-width:980px;margin:0 auto}
+  .tst-track{display:flex;gap:var(--space-5);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+             -ms-overflow-style:none;scrollbar-width:none;padding-bottom:var(--space-2)}
+  .tst-track::-webkit-scrollbar{display:none}
+  .tst-slide{flex:0 0 100%;scroll-snap-align:center;margin:0}
+  .tst-slide img{width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;background:var(--c-bg-2);
+                 border:1px solid var(--c-line);border-radius:var(--radius-lg,3px)}
+  .tst-nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;display:flex;
+           align-items:center;justify-content:center;background:var(--c-glass);backdrop-filter:blur(6px);
+           border:1px solid var(--c-line);color:var(--c-text);border-radius:999px;z-index:2;
+           transition:background .25s var(--ease-out),border-color .25s var(--ease-out),opacity .25s}
+  .tst-nav:hover{background:var(--c-accent-1);border-color:var(--c-accent-1);color:var(--c-bg)}
+  .tst-nav svg{width:20px;height:20px}
+  .tst-nav.prev{left:calc(-1 * var(--space-6))}
+  .tst-nav.next{right:calc(-1 * var(--space-6))}
+  .tst-dots{display:flex;justify-content:center;gap:.55rem;margin-top:var(--space-5)}
+  .tst-dots button{width:7px;height:7px;border-radius:999px;background:var(--c-line);padding:0;
+                   transition:background .25s,transform .25s}
+  .tst-dots button[aria-current="true"]{background:var(--c-accent-1);transform:scale(1.5)}
+  .tst-count{margin-top:var(--space-4);text-align:center;font-family:var(--font-mono);
+             font-size:var(--text-xs);letter-spacing:.12em;color:var(--c-text-faint)}
+  @media (max-width:1100px){.tst-nav.prev{left:.5rem}.tst-nav.next{right:.5rem}}
+
+  .tst-quote{max-width:70ch}
+  .tst-who{margin-top:var(--space-5);display:flex;align-items:center;gap:.6rem;font-weight:600}
+  .tst-who i{width:7px;height:7px;border-radius:50%;background:var(--c-accent-1);display:inline-block;flex:none}
+</style>
+</head>
+<body data-net="lite">
+<a href="#top" class="skip-link" data-added>Vai al contenuto</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="ss-night" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0.957 0 0 0 0.043  0 0.929 0 0 0.071  0 0 0.875 0 0.125  0 0 0 1 0"/></filter><filter id="ss-night-alt" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0.94 0 0 0 0.06  0 0.907 0 0 0.093  0 0 0.835 0 0.165  0 0 0 1 0"/></filter></svg>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="16" cy="16" r="14.5" stroke="currentColor" stroke-width="1"/>
+        <path d="M16 4 A12 12 0 0 1 16 28 A13 13 0 0 0 16 4Z" fill="var(--c-accent-1)"/>
+      </svg>
+      Cosimo Sgobba
+    </a>
+    <nav class="nav-links">
+      <a href="metodo.html">Il metodo</a>
+      <a href="ambiti.html">Gli ambiti</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="testimonianze.html" class="active">Testimonianze</a>
+      <a href="blog/index.html">Blog</a>
+      <a href="metodo.html#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="prenota.html" class="btn btn-primary">Prenota l'Analisi</a>
+      <button class="menu-btn" aria-label="Apri il menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu">
+  <button class="mobile-close" aria-label="Chiudi il menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <a href="metodo.html">Il metodo</a>
+  <a href="ambiti.html">Gli ambiti</a>
+  <a href="chi-sono.html">Chi sono</a>
+  <a href="testimonianze.html">Testimonianze</a>
+  <a href="blog/index.html">Blog</a>
+  <a href="metodo.html#faq">FAQ</a>
+  <a href="prenota.html" class="btn">Prenota l'Analisi</a>
+</div>
+
+<main id="top">
+
+<!-- ============ BLOCCO 1 · VIDEO TESTIMONIANZE ============ -->
+<section class="section" id="video-testimonianze" data-phase="n3">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Testimonianze</span>
+      <h1>Le storie di chi è tornato a <em>dormire</em></h1>
+      <p class="sec-sub">Le video testimonianze di chi ha già trasformato il proprio sonno con il percorso di sleep coaching.</p>
+    </div>
+    <div class="tst-videos">
+      <div class="reveal">
+        <div class="tst-embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/-1nUdP35WLc?rel=0" title="Video testimonianza" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="tst-embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/ZPbE7piFGm8?rel=0" title="Video testimonianza" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCCO 2 · SISTEMA RIPOSO (giostra) ============ -->
+<section class="band" id="sistema-riposo" data-phase="n3">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Sistema riposo</span>
+      <h2>Dopo il nuovo <em>sistema di riposo</em></h2>
+      <p class="sec-sub">I messaggi di chi ha migliorato il sonno con un guanciale o un materasso progettato su misura.</p>
+    </div>
+    <div class="tst-carousel reveal" id="tstCarousel">
+      <div class="tst-track" id="tstTrack" tabindex="0" role="group" aria-label="Recensioni scritte, scorri per vederle tutte">
+        <figure class="tst-slide"><img src="https://cosimosgobba.it/wp-content/uploads/2024/12/4.jpg" alt="Testimonianza 1 di 9" loading="lazy" /></figure>
+        <figure class="tst-slide"><img src="https://cosimosgobba.it/wp-content/uploads/2024/12/5.jpg" alt="Testimonianza 2 di 9" loading="lazy" /></figure>
+        <figure class="tst-slide"><img src="https://cosimosgobba.it/wp-content/uploads/2024/12/6.jpg" alt="Testimonianza 3 di 9" loading="lazy" /></figure>
+        <figure class="tst-slide"><img src="https://cosimosgobba.it/wp-content/uploads/2024/12/7.jpg" alt="Testimonianza 4 di 9" loading="lazy" /></figure>
+        <figure class="tst-slide"><img src="https://cosimosgobba.it/wp-content/uploads/2024/12/8.jpg" alt="Testimonianza 5 di 9" loading="lazy" /></figure>
+        <figure class="tst-slide"><img src="https://cosimosgobba.it/wp-content/uploads/2024/12/9.jpg" alt="Testimonianza 6 di 9" loading="lazy" /></figure>
+        <figure class="tst-slide"><img src="https://cosimosgobba.it/wp-content/uploads/2024/12/10.jpg" alt="Testimonianza 7 di 9" loading="lazy" /></figure>
+        <figure class="tst-slide"><img src="https://cosimosgobba.it/wp-content/uploads/2024/12/11.jpg" alt="Testimonianza 8 di 9" loading="lazy" /></figure>
+        <figure class="tst-slide"><img src="https://cosimosgobba.it/wp-content/uploads/2024/12/articolo-12.jpg" alt="Testimonianza 9 di 9" loading="lazy" /></figure>
+      </div>
+      <button class="tst-nav prev" type="button" aria-label="Recensione precedente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button class="tst-nav next" type="button" aria-label="Recensione successiva">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+      <div class="tst-dots" id="tstDots" role="tablist" aria-label="Vai alla recensione"></div>
+      <p class="tst-count" id="tstCount"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCCO 3 · VITTORIA BIANCO ============ -->
+<section class="section" id="vittoria-bianco" data-phase="n3">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Paralimpiadi 2024</span>
+      <h2>Uno dei momenti più <em>emozionanti</em> di sempre</h2>
+    </div>
+    <div class="tst-videos reveal">
+        <div class="tst-embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/hVsaGhU8TKo?rel=0" title="Vittoria Bianco — Paralimpiadi 2024" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="tst-quote reveal" style="margin:var(--space-8) auto 0">
+      <p>Per Vittoria Bianco, medaglia di bronzo alle Paralimpiadi 2024, ho progettato un dispositivo correttore che ha utilizzato nel villaggio olimpico di Parigi, migliorando l&rsquo;efficacia del sistema di riposo disponibile. Inoltre, durante la sua esperienza di Parigi ha messo in atto una serie di consigli di cui abbiamo parlato per migliorare la qualità del suo sonno, con l&rsquo;intento di supportare le sue performance olimpiche.</p>
+      <p class="tst-who"><i></i> Vittoria Bianco — nuotatrice paralimpica, bronzo a Parigi 2024</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCCO 4 · CTA ============ -->
+<section class="band" id="contatti" data-phase="n4">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Prenota</span>
+      <h2>Migliora il tuo <em>riposo</em></h2>
+    </div>
+    <div class="reveal">
+      <p>Scrivimi per qualsiasi informazione o per prenotare la prima call conoscitiva senza impegno</p>
+      <p style="margin-top:var(--space-6)"><a href="prenota.html" class="btn btn-primary">Prenota l'Analisi SISTEMA SONNO</a></p>
+    </div>
+  </div>
+</section>
+
+<script>
+/* Giostra testimonianze: scorrimento nativo + frecce, puntini e tastiera. */
+(function () {
+  var track = document.getElementById('tstTrack');
+  if (!track) return;
+  var wrap = document.getElementById('tstCarousel');
+  var dots = document.getElementById('tstDots');
+  var count = document.getElementById('tstCount');
+  var slides = Array.prototype.slice.call(track.children);
+  var prev = wrap.querySelector('.tst-nav.prev');
+  var next = wrap.querySelector('.tst-nav.next');
+
+  slides.forEach(function (_, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-label', 'Recensione ' + (i + 1));
+    b.addEventListener('click', function () { go(i); });
+    dots.appendChild(b);
+  });
+
+  function index() {
+    var w = slides[0].offsetWidth + parseFloat(getComputedStyle(track).gap || 0);
+    return Math.round(track.scrollLeft / w);
+  }
+  function go(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+  }
+  function sync() {
+    var i = index();
+    Array.prototype.forEach.call(dots.children, function (d, j) {
+      d.setAttribute('aria-current', j === i ? 'true' : 'false');
+    });
+    count.textContent = (i + 1) + ' / ' + slides.length;
+    prev.style.opacity = i === 0 ? .35 : 1;
+    next.style.opacity = i === slides.length - 1 ? .35 : 1;
+  }
+
+  prev.addEventListener('click', function () { go(index() - 1); });
+  next.addEventListener('click', function () { go(index() + 1); });
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(index() + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(index() - 1); }
+  });
+  var t;
+  track.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(sync, 90); });
+  window.addEventListener('resize', sync);
+  sync();
+})();
+</script>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="index.html" class="brand">
+          <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="14.5" stroke="currentColor" stroke-width="1"/><path d="M16 4 A12 12 0 0 1 16 28 A13 13 0 0 0 16 4Z" fill="var(--c-accent-1)"/></svg>
+          Cosimo Sgobba
+        </a>
+        <p>Sleep coach e consulente del sonno. Analizzo il tuo <span class="brand-term">sistema sonno</span> e progetto il percorso giusto per te.</p>
+      </div>
+      <div class="foot-col">
+        <span class="spec">MENU</span>
+        <a href="metodo.html">Il metodo</a>
+        <a href="ambiti.html">Gli ambiti</a>
+        <a href="chi-sono.html">Chi sono</a>
+        <a href="testimonianze.html">Testimonianze</a>
+        <a href="blog/index.html">Blog</a>
+        <a href="metodo.html#faq">FAQ</a>
+      </div>
+      <div class="foot-col">
+        <span class="spec">CONTATTI</span>
+        <a href="mailto:info@cosimosgobba.it">info@cosimosgobba.it</a>
+        <a href="prenota.html">Prenota l'Analisi</a>
+        <a href="https://www.instagram.com/cosimo_sgobba/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@cosimosgobba3214" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© Cosimo Sgobba — Sistema Sonno</span>
+      <span>Sgobba Cosimo — Via G. Donizetti 6, 70017 Putignano (BA) — P.IVA 09019080721</span>
+      <span><a href="privacy.html">Privacy e cookie</a> · Sleep Coach Certificato</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="js/motion.js" defer></script>
+<script type="module" async src="js/neural.js"></script>
+<script src="js/polish.js" defer></script>
+<script src="js/site.js"></script>
+</body>
+</html>

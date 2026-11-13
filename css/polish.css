@@ -1,0 +1,271 @@
+/* ==========================================================================
+   SISTEMA SONNO — Polish: micro-interazioni premium sopra notte.css.
+   Tutto progressivo: senza JS o con prefers-reduced-motion il sito resta
+   identico alla versione "Notte & quiete", solo più statico.
+   Richiede js/polish.js per: header, spotlight, barra di lettura, torna su.
+   ========================================================================== */
+
+/* ---- Transizioni tra pagine (View Transitions cross-document) ------------
+   Chrome/Edge/Safari recenti: la pagina sfuma "come chiudere gli occhi".
+   Gli altri browser navigano normalmente. */
+@view-transition { navigation: auto; }
+.site-header { view-transition-name: ss-header; }
+::view-transition-old(root) { animation: ss-vt-out .32s cubic-bezier(.4, 0, 1, 1) both; }
+::view-transition-new(root) { animation: ss-vt-in .55s cubic-bezier(.16, 1, .3, 1) both; }
+::view-transition-group(ss-header) { animation-duration: 0s; }
+@keyframes ss-vt-out { to { opacity: 0; filter: blur(6px); transform: scale(.992); } }
+@keyframes ss-vt-in { from { opacity: 0; filter: blur(8px); transform: translateY(10px); } }
+
+/* ---- Dettagli di sistema ------------------------------------------------- */
+::selection { background: rgba(201, 162, 102, .35); color: var(--c-text); }
+html { scrollbar-color: rgba(201, 162, 102, .45) var(--c-ink); scrollbar-width: thin; }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--c-ink); }
+::-webkit-scrollbar-thumb { background: rgba(201, 162, 102, .35); border: 3px solid var(--c-ink); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(201, 162, 102, .6); }
+
+/* ---- Header: si addensa dopo lo scroll, si ritira scendendo --------------- */
+.site-header {
+  transition: transform .45s cubic-bezier(.16, 1, .3, 1), background .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.site-header.is-scrolled {
+  background: rgba(9, 14, 26, .78);
+  border-bottom-color: rgba(201, 162, 102, .16);
+  box-shadow: 0 10px 40px -18px rgba(0, 0, 0, .7);
+}
+.site-header.is-hidden { transform: translateY(-100%); }
+.site-header:focus-within { transform: none; }
+
+/* voci di menu: punto lunare sopra la voce attiva/hover */
+.nav-links a::before {
+  content: ""; position: absolute; left: 50%; top: 4px;
+  width: 4px; height: 4px; margin-left: -2px; border-radius: 50%;
+  background: var(--c-accent-1); box-shadow: 0 0 8px rgba(201, 162, 102, .9);
+  opacity: 0; transform: translateY(4px) scale(.4);
+  transition: opacity .3s ease, transform .4s cubic-bezier(.16, 1, .3, 1);
+}
+.nav-links a:hover::before, .nav-links a.active::before { opacity: 1; transform: none; }
+
+/* ---- Bottoni: riflesso d'ottone e pressione ------------------------------ */
+.btn { position: relative; isolation: isolate; overflow: hidden; }
+.btn:active { scale: .97; }
+.btn { transition-property: background, color, border-color, box-shadow, transform, scale; }
+.btn-primary::after {
+  content: ""; position: absolute; inset: -1px; z-index: -1; pointer-events: none;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 244, 222, .55) 48%, transparent 62%);
+  transform: translateX(-120%);
+}
+.btn-primary:hover::after { transform: translateX(120%); transition: transform .9s cubic-bezier(.16, 1, .3, 1); }
+
+/* link testuali: la riga si disegna da sinistra */
+.tlink { position: relative; }
+.tlink::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+  background: var(--c-accent-1); transform: scaleX(0); transform-origin: right;
+  transition: transform .5s cubic-bezier(.16, 1, .3, 1);
+}
+.tlink:hover::after, .tlink:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+
+/* ---- Spotlight lunare sulle card in vetro -------------------------------- */
+.ss-spot { position: relative; isolation: isolate; }
+.ss-spot::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: inherit;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(127, 155, 214, .14), transparent 45%);
+  opacity: 0; transition: opacity .4s ease;
+}
+.ss-spot::after {
+  content: ""; position: absolute; inset: -1px; z-index: 2; pointer-events: none; border-radius: inherit; padding: 1px;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(201, 162, 102, .75), transparent 60%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity .4s ease;
+}
+.ss-spot:hover::before, .ss-spot:hover::after { opacity: 1; }
+.blog-card.ss-spot, .div-card.ss-spot { transition: transform .5s cubic-bezier(.16, 1, .3, 1), border-color .3s ease; }
+.blog-card.ss-spot:hover, .div-card.ss-spot:hover { transform: translateY(-4px); }
+
+/* ---- Enfasi nei titoli: riga di luce che si disegna ----------------------- */
+h1 em, h2 em {
+  background-image: linear-gradient(90deg, rgba(201, 162, 102, 0), rgba(201, 162, 102, .9), rgba(127, 155, 214, .0));
+  background-repeat: no-repeat; background-position: 0 92%; background-size: 0% 2px;
+  transition: background-size 1.2s cubic-bezier(.16, 1, .3, 1) .35s;
+  padding-bottom: .04em;
+}
+.ss-lit h1 em, .ss-lit h2 em, h1.ss-lit em, h2.ss-lit em, .reveal.in h2 em { background-size: 100% 2px; }
+
+/* ---- Foto: emergono con una tendina morbida ------------------------------- */
+/* polish.js mette .ss-veil solo sulle foto fuori dall'hero e aggiunge .ss-in
+   quando entrano nello schermo; senza JS le foto restano sempre visibili. */
+.ss-veil img {
+  clip-path: inset(8% 8% 8% 8%); opacity: .001;
+  transition: clip-path 1.4s cubic-bezier(.16, 1, .3, 1), opacity 1s ease;
+}
+.ss-veil.ss-in img { clip-path: inset(0 0 0 0); opacity: 1; }
+
+/* ---- Card in vetro: il testo non tocca più il bordo ----------------------- */
+.blog-card, .faq-item { padding-inline: clamp(1.25rem, 3vw, 2.5rem); }
+
+/* ---- Barra di lettura negli articoli -------------------------------------- */
+.ss-read {
+  position: fixed; left: 0; top: 0; z-index: 120; height: 2px; width: 100%;
+  transform-origin: 0 50%; transform: scaleX(var(--p, 0));
+  background: linear-gradient(90deg, var(--c-lunar), var(--c-accent-1));
+  box-shadow: 0 0 10px rgba(201, 162, 102, .6);
+  pointer-events: none;
+}
+
+/* ---- Torna su: piccola luna con anello d'avanzamento ---------------------- */
+.ss-top {
+  position: fixed; right: clamp(1rem, 3vw, 2rem); bottom: clamp(1rem, 3vw, 2rem); z-index: 140;
+  width: 48px; height: 48px; border-radius: 50%;
+  display: grid; place-items: center; cursor: pointer;
+  color: var(--c-text); background: var(--c-glass);
+  border: 1px solid var(--c-line);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  opacity: 0; transform: translateY(12px) scale(.9); pointer-events: none;
+  transition: opacity .4s ease, transform .5s cubic-bezier(.16, 1, .3, 1), border-color .3s ease, box-shadow .3s ease;
+}
+.ss-top.show { opacity: 1; transform: none; pointer-events: auto; }
+.ss-top:hover { border-color: rgba(201, 162, 102, .6); box-shadow: 0 0 24px rgba(201, 162, 102, .25); }
+.ss-top svg.ss-ring { width: 48px; height: 48px; position: absolute; inset: -1px; transform: rotate(-90deg); }
+.ss-top .ring { fill: none; stroke: var(--c-accent-1); stroke-width: 1.5; stroke-dasharray: 1; stroke-dashoffset: var(--o, 1); }
+.ss-top .arrow { width: 16px; height: 16px; transition: transform .4s cubic-bezier(.16, 1, .3, 1); }
+.ss-top:hover .arrow { transform: translateY(-3px); }
+
+/* ---- FAQ / righe a comparsa: icona che ruota morbida ---------------------- */
+.faq-item, .problem-row, .ambito { transition: background .3s ease, border-color .3s ease; }
+.faq-item.open { border-color: rgba(201, 162, 102, .4); }
+
+/* ---- Movimento ridotto: niente di tutto questo si muove ------------------- */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+  .site-header, .site-header.is-hidden { transform: none; transition: none; }
+  .btn-primary::after, .tlink::after { transition: none; }
+  .ss-veil img { clip-path: none; opacity: 1; transition: none; }
+  h1 em, h2 em { background-size: 100% 2px; transition: none; }
+  .blog-card.ss-spot:hover, .div-card.ss-spot:hover { transform: none; }
+}
+@media (hover: none) { .ss-spot::before, .ss-spot::after { display: none; } }
+
+/* ==========================================================================
+   ANIMAZIONI v2 — "dalla veglia al sonno"
+   ========================================================================== */
+
+/* ---- Titoli di sezione: parole che salgono, come nell'hero --------------- */
+.ss-split .wl { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .08em; margin-bottom: -.08em; }
+.ss-split .w {
+  display: inline-block; transform: translateY(105%); opacity: 0;
+  transition: transform .9s cubic-bezier(.16, 1, .3, 1), opacity .6s ease;
+  transition-delay: calc(var(--i, 0) * 55ms);
+}
+.ss-split.ss-words-in .w { transform: none; opacity: 1; }
+
+/* ---- Frase manifesto: le parole si accendono scorrendo -------------------- */
+.ss-scrub .sw { opacity: .18; transition: opacity .25s linear, color .25s linear; }
+.ss-scrub .sw.on { opacity: 1; }
+
+/* ---- Alone che respira dietro il ritratto (ritmo 4-7-8) ------------------- */
+.hero .photo { isolation: isolate; }
+.hero .photo .ss-halo {
+  position: absolute; inset: 6% 4% 10% 4%; z-index: -1; pointer-events: none; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(127, 155, 214, .32), rgba(201, 162, 102, .12) 55%, transparent 75%);
+  filter: blur(18px);
+  animation: ss-478 19s ease-in-out infinite;
+}
+@keyframes ss-478 {
+  0%   { transform: scale(.86); opacity: .45; }
+  21%  { transform: scale(1.06); opacity: 1; }   /* inspira 4s */
+  58%  { transform: scale(1.06); opacity: .9; }  /* trattieni 7s */
+  100% { transform: scale(.86); opacity: .45; }  /* espira 8s */
+}
+
+/* ---- Stelle cadenti sulle bande scure ------------------------------------- */
+.ss-sky { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.band > .wrap, .hero > .wrap { position: relative; z-index: 1; }
+.ss-star {
+  position: absolute; width: 140px; height: 1px; border-radius: 1px;
+  background: linear-gradient(90deg, rgba(236, 228, 210, 0), rgba(236, 228, 210, .9));
+  filter: drop-shadow(0 0 4px rgba(201, 162, 102, .8));
+  transform: rotate(-24deg) translateX(0); opacity: 0;
+  animation: ss-fall 1.4s cubic-bezier(.3, .6, .4, 1) forwards;
+}
+.ss-star::after {
+  content: ""; position: absolute; right: -2px; top: -1.5px; width: 4px; height: 4px; border-radius: 50%;
+  background: #FFF4DE; box-shadow: 0 0 8px 2px rgba(255, 236, 200, .8);
+}
+@keyframes ss-fall {
+  0% { opacity: 0; transform: rotate(-24deg) translateX(0); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: rotate(-24deg) translateX(-420px); }
+}
+
+/* ---- Luce lunare che segue il puntatore (solo desktop) -------------------- */
+.ss-glow {
+  position: fixed; left: 0; top: 0; width: 560px; height: 560px; margin: -280px 0 0 -280px;
+  border-radius: 50%; pointer-events: none; z-index: 0;
+  background: radial-gradient(closest-side, rgba(127, 155, 214, .10), rgba(127, 155, 214, .04) 55%, transparent);
+  transform: translate3d(var(--gx, -999px), var(--gy, -999px), 0);
+  transition: opacity .6s ease; opacity: 0;
+}
+.ss-glow.on { opacity: 1; }
+
+/* ---- Video testimonianze: il poster si avvicina, il play "respira" -------- */
+.video-frame { overflow: hidden; }
+.video-frame img { transition: transform 1.2s cubic-bezier(.16, 1, .3, 1), filter .6s ease; }
+.video-card:hover .video-frame img { transform: scale(1.05); filter: brightness(1.08); }
+.play-btn .ring { transition: transform .5s cubic-bezier(.16, 1, .3, 1), box-shadow .4s ease; }
+.video-card:hover .play-btn .ring { transform: scale(1.12); box-shadow: 0 0 0 10px rgba(201, 162, 102, .12), 0 0 30px rgba(201, 162, 102, .35); }
+
+/* ---- Card del blog: entrano a cascata ------------------------------------- */
+.ss-cascade > * { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .9s cubic-bezier(.16, 1, .3, 1); }
+.ss-cascade > .ss-in { opacity: 1; transform: none; }
+
+/* ---- Icona FAQ: il "+" ruota invece di scattare --------------------------- */
+.faq-icon { transition: transform .45s cubic-bezier(.16, 1, .3, 1); }
+.faq-item.open .faq-icon { transform: rotate(180deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ss-split .w { transform: none; opacity: 1; transition: none; }
+  .ss-scrub .sw { opacity: 1; }
+  .hero .photo .ss-halo, .ss-star { animation: none; display: none; }
+  .ss-cascade > * { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---- Ritratto di "Chi sono": stesso trattamento notte dell'hero ----------- */
+#chi-sono .split-media img {
+  filter: contrast(1.08) saturate(0.9) url(#ss-night);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent), linear-gradient(to bottom, transparent, #000 10%, #000 78%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent), linear-gradient(to bottom, transparent, #000 10%, #000 78%, transparent);
+  mask-composite: intersect;
+  box-shadow: none;
+}
+#chi-sono .split-media { background: transparent; }
+#chi-sono .split-media::after, #chi-sono .split-media::before { opacity: 0; }
+
+/* ==========================================================================
+   AFFINAMENTO v05 (nov 2026) — ritocchi di leggibilità e coerenza.
+   Nessun cambio di struttura: per tornare indietro basta rimuovere questo blocco.
+   ========================================================================== */
+/* Tipografia: titoli più compatti e bilanciati, paragrafi senza vedove */
+h1, h2 { letter-spacing: -0.02em; text-wrap: balance; }
+p { text-wrap: pretty; }
+.lead { font-weight: 400; }
+.sec-head h1 { margin-top: var(--space-5); font-size: var(--text-3xl); }
+.sec-sub { font-size: var(--text-lg); line-height: 1.5; }
+/* Link dentro i testi: prima erano indistinguibili dal paragrafo */
+main p a:not(.btn):not(.tlink) { color: var(--c-accent-1); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .22em; text-decoration-color: rgba(201, 162, 102, .45); transition: text-decoration-color .2s; }
+main p a:not(.btn):not(.tlink):hover { text-decoration-color: currentColor; }
+/* Menu: niente voci spezzate su due righe; sotto 1100px passa al menu a pannello */
+.brand, .nav-links a, .nav-cta .btn { white-space: nowrap; }
+.nav-links { gap: clamp(.9rem, 1.8vw, 2.2rem); }
+@media (max-width: 1100px) { .nav-links { display: none; } .menu-btn { display: flex; } }
+/* Bottoni e riquadri: stesso raggio minimo ovunque */
+.btn, .menu-btn { border-radius: var(--radius); }
+.btn { padding: 1.05em 1.8em; }
+.btn:active { transform: translateY(1px); }
+.video-frame, .video-frame img, .tst-embed, .tst-gallery img, .div-card { border-radius: var(--radius-lg); }
+/* Rete di sfondo un filo più discreta: il testo sopra si legge meglio */
+body[data-net="lite"] .sleepnet { opacity: .38; }
+/* Telefono: aree di tocco più comode */
+@media (max-width: 640px) { .btn { padding: 1.15em 1.6em; } .mobile-menu a { padding-block: .35em; } }
