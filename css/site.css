@@ -328,7 +328,7 @@
   transition: background 0.3s var(--ease-out), border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
 }
 .div-play .ring svg { width: 16px; height: 16px; margin-left: 2px; }
-.div-media:hover .div-play .ring { background: var(--c-accent-1); border-color: transparent; transform: scale(1.08); }
+.div-media:hover .div-play .ring, .div-tedx:hover .div-play .ring { background: var(--c-accent-1); border-color: transparent; transform: scale(1.08); }
 .div-play-label { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-ink-text-2); }
 .div-media h3 { margin: 0; font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; max-width: 22ch; color: var(--c-ink-text); text-wrap: pretty; }
 
