@@ -1032,3 +1032,7 @@ section.tone-alt,
 .tedx-embed { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #000; border: 1px solid var(--c-ink-line); }
 .tedx-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 @media (max-width: 960px) { .tedx-grid { grid-template-columns: 1fr; } }
+/* TEDx dentro "La mia attività divulgativa": video in evidenza, clip sotto */
+.divulgativa .tedx-grid { margin-bottom: clamp(2rem, 4vw, 3rem); scroll-margin-top: 6rem; }
+.div-grid-single { grid-template-columns: 1fr; }
+.div-grid-single .div-card { min-height: clamp(240px, 26vw, 320px); }
